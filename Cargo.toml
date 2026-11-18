@@ -1,0 +1,20 @@
+[package]
+name = "image-to-pdf"
+version = "1.0.0"
+edition = "2021"
+description = "Portable Image to PDF converter for Windows"
+
+[dependencies]
+eframe = "0.29"
+# image 0.24 must match the version printpdf 0.7 uses internally.
+image = { version = "0.24", default-features = false, features = ["jpeg", "png", "bmp", "tiff", "webp"] }
+printpdf = "0.7"
+kamadak-exif = "0.5"
+rfd = "0.15"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
